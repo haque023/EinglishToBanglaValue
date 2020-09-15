@@ -2,7 +2,36 @@ package com.emdad.valueconverter.util;
 
 public class TextConverter {
 
-    public static String englishToBangla(int key){
+    public String getNumber(String number){
+
+        if(!number.equals("") ) {
+            if(!number.contains("-")) {
+                Long l = Long.parseLong(number);
+                String generateValue =englishToBangla(l);
+                return  generateValue;
+            }
+            else{
+                String value =number;
+                StringBuilder sb = new StringBuilder(value);
+                sb.deleteCharAt(0);
+                value=sb.toString();
+                if(!value.equals("")) {
+                    Long l = Long.parseLong(value);
+                    String generateValue = "-" + englishToBangla(l);
+                    return generateValue;
+                }
+                else {
+                    return "";
+                }
+            }
+        }
+        else {
+            return "";
+        }
+
+    }
+
+    private String englishToBangla(long key){
 
 
         String ss=key+"";
@@ -16,7 +45,7 @@ public class TextConverter {
                 s+="";
                 break;
             }
-            int val=key%10;
+            long val=key%10;
             key=key/10;
             if(val==0){
                 s+="০";

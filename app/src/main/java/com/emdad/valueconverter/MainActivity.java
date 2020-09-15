@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                String generateValue= TextConverter.englishToBangla(Integer.parseInt(valueEntered.getText().toString()));
-                generate.setText(generateValue);
+                TextConverter textConverter=new TextConverter();
+                generate.setText(textConverter.getNumber(valueEntered.getText().toString()));
             }
         });
     }
